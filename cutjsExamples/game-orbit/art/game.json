@@ -1,0 +1,10 @@
+[ {
+  "input" : "base.svg",
+  "output" : "../www/media/base.png 8x"
+}, {
+  "input" : "digit.svg",
+  "output" : "../www/media/digit.png 8x"
+}, {
+  "input" : "bg.svg",
+  "output" : "../www/media/bg.png 20% 4x"
+} ]
