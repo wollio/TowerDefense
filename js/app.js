@@ -16,7 +16,7 @@ Cut(function(root, container) {
     draw();
 
     function draw() {
-        tower = new Tower(5,5,10,10,image);
+        var tower = new MagicTower(5,5,10,10,root);
         tower.draw();
     }
 });
