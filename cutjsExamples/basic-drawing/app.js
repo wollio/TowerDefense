@@ -8,9 +8,9 @@ Cut(function(root, container) {
 
   var image = Cut.image().appendTo(root).pin("align", 0.5);
 
-  root.on(Cut.Mouse.CLICK, function() {
-    draw();
-  });
+    root.on(Cut.Mouse.CLICK, function() {
+        draw();
+    });
 
   var p = 4;
   draw();
