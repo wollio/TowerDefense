@@ -1,6 +1,6 @@
 Cut({
     name : "tower",
-    imagePath : "../img/base.png",
+    imagePath : "img/base.png",
     imageRatio : 4,
     ratio : 16,
     filter : function(cut) {
