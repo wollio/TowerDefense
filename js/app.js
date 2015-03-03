@@ -1,3 +1,16 @@
+function Map() {
+    this.objects = [];
+
+    this.running = false;
+}
+
+Map.prototype.addObject = function(obj) {
+    obj.Map = this;
+    this.objects.push(obj);
+    obj.uiCreate(this);
+    return obj;
+};
+
 Cut(function(root, container) {
 
     Cut.Mouse(root, container);
