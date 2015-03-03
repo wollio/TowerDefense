@@ -23,15 +23,16 @@ function MagicTower(x, y, root) {
     this.damage = 10;
     this.range = 5;
     this.root = root;
-    this.image = Cut.image().appendTo(this.root).pin("align", 0.5);
-    Tower.call(this,x,y,this.image,this.attackspeed, this.range,this.damage);
+    var towerImg = Cut.image('tower:magic').appendTo(this.root);
+    this.image = towerImg.pin("align", 0.5);
+    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage);
 }
 
-function FireTower(xPos, yPos, root) {
+function FireTower(x, y, root) {
     this.attackspeed = 0.5;
     this.damage = 10;
     this.range = 5;
     this.root = root;
     this.image = Cut.image().appendTo(root).pin("align", 0.5);
-    Tower.call(this,xPos,yPos,this.image,this.attackspeed, this.range,this.damage);
+    Tower.call(this, x, y, this.image , this.attackspeed, this.range, this.damage);
 }

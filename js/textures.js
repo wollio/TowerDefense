@@ -1,5 +1,5 @@
 Cut({
-    name : "base",
+    name : "tower",
     imagePath : "../img/base.png",
     imageRatio : 4,
     ratio : 16,
@@ -8,6 +8,6 @@ Cut({
         return cut;
     },
     cutouts : [
-        { name : "drone", x : 0, y : 0, width : 1, height : 1 }
+        { name : "magic", x : 0, y : 0, width : 1, height : 1 }
     ]
-}); 
+});

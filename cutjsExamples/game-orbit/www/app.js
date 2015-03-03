@@ -104,9 +104,9 @@ Cut(function(root, container) {
 
   // some static values
   var PLANET_R = 6; // planet collision radius
-  var EXPLODE_R = 6; // explode radius
-  var RELOAD = 1000; // reload time
-  var LIFE = 3;
+  var EXPLODE_R = 15; // explode radius
+  var RELOAD = 100; // reload time
+  var LIFE = 300;
 
   // game objects
   var bullets = [];
