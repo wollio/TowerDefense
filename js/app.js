@@ -23,10 +23,7 @@ Cut(function(root, container) {
     draw();
 
     function draw() {
-        var magicTower = new MagicTower(5,5,root);
+        var magicTower = new MagicTower(20,20,root);
         magicTower.draw();
-
-        var fireTower = new FireTower(2,2,root);
-        fireTower.draw();
     }
 });
