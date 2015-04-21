@@ -7,36 +7,29 @@ Cut(function(root, container) {
     root.viewbox(200, 200);
     root.on(Cut.Mouse.CLICK, function(ev) {
         console.log(ev);
-        draw(ev);
     });
 
 
     // game play view
     var playview = Cut.create().appendTo(root).on('viewport', function() {
+        this.selectedSocket = {};
         this.pin({
             width : root.pin('width'),
             height : root.pin('height')
         });
     });
-
+    var sockets = [new Socket(10,20,playview),new Socket(20,20,playview),new Socket(30,20,playview),
+        new Socket(40,20,playview), new Socket(50,20,playview), new Socket(60,20,playview),
+        new Socket(70,20,playview)
+    ]
 
 
     function draw(ev) {
-        if(ev) {
-            var magicTower = new MagicTower(ev.x, ev.y, playview);
-            magicTower.draw();
-        }
-    }
-
-    // add the background
-    Cut.image('map:background').pin('align', 0.5).on('viewport', function() {
-        // on viewport change scale it to fill root
-        this.pin({
-            scaleMode : 'out',
-            scaleWidth : root.pin('width'),
-            scaleHeight : root.pin('height')
+        sockets.forEach(function(socket){
+        socket.draw();
         });
-    }).appendTo(root);
 
+    }
+    draw();
 
 });
