@@ -1,23 +1,22 @@
 
-function Map() {
-    this.x = 0;
-    this.y = 0;
+function Map(root) {
 
-    var img = Cut.image('base:planet').pin('handle', 0.5);
-
+    this.image = 'map:standard';
+    this.root = root;
     this.add = function(parent) {
         img.appendTo(parent);
         return this;
     };
+
+    this.draw = function() {
+        Cut.image(this.image).appendTo(this.root).pin({
+            align : 0.5
+        })};
 
     this.remove = function() {
         img.remove();
         return this;
     };
 
-    this.tick = function(t, time) {
-        img.pin('alpha', Math.min(1, Math.max(0, Math.pow(life / LIFE, 2))));
-    };
-}/**
- * Created by vmadmin on 03.03.2015.
- */
+
+}

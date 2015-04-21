@@ -38,6 +38,7 @@ Cut(function(root, container) {
     });
 
 
+
     function draw(ev) {
         if(ev) {
             var magicTower = new MagicTower(ev.x, ev.y, playview);
@@ -45,7 +46,16 @@ Cut(function(root, container) {
         }
     }
 
-    draw();
+    // add the background
+    Cut.image('map:background').pin('align', 0.5).on('viewport', function() {
+        // on viewport change scale it to fill root
+        this.pin({
+            scaleMode : 'out',
+            scaleWidth : root.pin('width'),
+            scaleHeight : root.pin('height')
+        });
+    }).appendTo(root);
+
 
     function play(){
         life = LIFE;
