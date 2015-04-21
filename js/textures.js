@@ -15,16 +15,10 @@ Cut({
 }
 );
 
+// Adding a texture
 Cut({
-        name : "socket",
-        imagePath : "img/socket.png",
-        imageRatio : 4,
-        ratio : 16,
-        cutouts : [
-            {
-                name : "standard", x : 0, y : 0, width : 1, height : 1
-            }
-        ]
+    image : 'img/standard.png',
+    textures : {
+        map : { x : 16, y : 1, width : 800, height : 621 }
     }
-);
-
+});

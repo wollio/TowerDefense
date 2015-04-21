@@ -28,6 +28,8 @@ Cut(function(root, container) {
     });
 
 
+
+
     // game play view
     var playview = Cut.create().appendTo(root).on('viewport', function() {
         this.selectedSocket = {};
@@ -36,6 +38,17 @@ Cut(function(root, container) {
             height : root.pin('height')
         });
     });
+
+    //Background
+    Cut.image('map').pin('align', 0.5).on('viewport', function() {
+        // on viewport change scale it to fill root
+        this.pin({
+            scaleMode : 'out',
+            scaleWidth : root.pin('width'),
+            scaleHeight : root.pin('height')
+        });
+    }).appendTo(playview);
+
     var sockets = [new Socket(10,20,playview),new Socket(20,20,playview),new Socket(30,20,playview),
         new Socket(40,20,playview), new Socket(50,20,playview), new Socket(60,20,playview),
         new Socket(70,20,playview)
