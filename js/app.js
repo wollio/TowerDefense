@@ -5,8 +5,9 @@ Cut(function(root, container) {
     Cut.Mouse(root, container);
 
     root.viewbox(200, 200);
-    root.on(Cut.Mouse.CLICK, function() {
-        draw();
+    root.on(Cut.Mouse.CLICK, function(ev) {
+        console.log(ev);
+        draw(ev);
     });
 
 
@@ -19,9 +20,11 @@ Cut(function(root, container) {
     });
 
 
-    function draw() {
-        var magicTower = new MagicTower(50,100,playview);
-        magicTower.draw();
+    function draw(ev) {
+        if(ev) {
+            var magicTower = new MagicTower(ev.x, ev.y, playview);
+            magicTower.draw();
+        }
     }
 
     draw();

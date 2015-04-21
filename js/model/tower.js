@@ -7,18 +7,13 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
     this.image = image;
     this.root = root;
     this.draw = function() {
-        Cut.image(this.image).appendTo(this.root).pin('align',0.5);
+        Cut.image(this.image).appendTo(this.root).pin({
+            offsetX : this.x,
+            offsetY : this.y
+        });
 
     };
-    //this.draw = function() {
-    //    this.image.image(Cut.Out.drawing(20, 20, 4, function (ctx, ratio) {
-    //        ctx.scale(ratio, ratio);
-    //        ctx.arc(5, 5, 2.4, 0, 2 * Math.PI);
-    //        ctx.lineWidth = 0.5;
-    //        ctx.strokeStyle = "#000";
-    //        ctx.stroke();
-    //    }));
-    //};
+
 }
 
 function MagicTower(x, y, root) {
