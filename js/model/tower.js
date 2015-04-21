@@ -7,7 +7,10 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
     this.image = image;
     this.root = root;
     this.draw = function() {
-        Cut.image(this.image).appendTo(this.root).pin('align',0.5);
+        Cut.image(this.image).appendTo(this.root).pin({
+            offsetX: this.x,
+            offsetY: this.y
+        });
 
     };
     //this.draw = function() {

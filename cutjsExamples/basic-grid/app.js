@@ -8,9 +8,9 @@ Cut(function(root, container) {
 
   var j = 0, i = 0;
   var column = Cut.column().appendTo(root).pin("align", 0.5).spacing(1);
-  for (j = 0; j < 9; j++) {
+  for (j = 0; j < 15; j++) {
     var row = Cut.row().appendTo(column).spacing(1);
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < 25; i++) {
       // colors as frames
       var cell = Cut.anim("base:color_").appendTo(row).pin("pivot", 0.5);
       cell.on(Cut.Mouse.MOVE, function(point) {
