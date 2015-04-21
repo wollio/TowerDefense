@@ -1,15 +1,4 @@
-function Map() {
-    this.objects = [];
 
-    this.running = false;
-}
-
-Map.prototype.addObject = function(obj) {
-    obj.Map = this;
-    this.objects.push(obj);
-    obj.uiCreate(this);
-    return obj;
-};
 
 Cut(function(root, container) {
 
@@ -20,13 +9,21 @@ Cut(function(root, container) {
         draw();
     });
 
-    draw();
+
+    // game play view
+    var playview = Cut.create().appendTo(root).on('viewport', function() {
+        this.pin({
+            width : root.pin('width'),
+            height : root.pin('height')
+        });
+    });
+
 
     function draw() {
-        var magicTower = new MagicTower(5,5,root);
+        var magicTower = new MagicTower(50,100,playview);
         magicTower.draw();
-
-        var fireTower = new FireTower(2,2,root);
-        fireTower.draw();
     }
+
+    draw();
+
 });
