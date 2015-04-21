@@ -2,6 +2,24 @@
 
 Cut(function(root, container) {
 
+    /**
+     * static variables
+     * */
+    var LIFE = 100;
+
+    /**
+     * game objects
+     * */
+    var monsters = [];
+    var bullets = [];
+    var sockels = [];
+
+    /**
+     * game state
+     * */
+    var life = 0;
+    var score = 0;
+
     Cut.Mouse(root, container);
 
     root.viewbox(200, 200);
@@ -28,5 +46,12 @@ Cut(function(root, container) {
     }
 
     draw();
+
+    function play(){
+        life = LIFE;
+        score = 0;
+
+    }
+
 
 });
