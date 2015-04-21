@@ -16,13 +16,15 @@ Cut({
 );
 
 Cut({
-        name : "map",
-        imagePath : "img/standart.png",
-        ratio : 12,
+        name : "socket",
+        imagePath : "img/socket.png",
+        imageRatio : 4,
+        ratio : 16,
         cutouts : [
             {
-                name : "background", x : 0, y : 50, width : 30, height : 30
+                name : "standard", x : 0, y : 0, width : 1, height : 1
             }
         ]
     }
 );
+

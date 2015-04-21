@@ -31,3 +31,12 @@ function FireTower(x, y, root) {
     this.image = "tower:magic";
     Tower.call(this, x, y, this.image , this.attackspeed, this.range, this.damage, this.root);
 }
+
+function IceTower(x, y, root) {
+    this.attackspeed = 0.5;
+    this.damage = 10;
+    this.range = 5;
+    this.root = root;
+    this.image = "tower:magic";
+    Tower.call(this, x, y, this.image , this.attackspeed, this.range, this.damage, this.root);
+}
