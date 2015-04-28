@@ -7,6 +7,14 @@ function Socket(x, y, root) {
     this.dialog = undefined;
     this.tower = undefined;
     this.draw = function() {
+        Cut.image(this.image).appendTo(this.root).pin({
+            scaleMode : 'in',
+            offsetX : this.x,
+            offsetY : this.y
+        }).on(Cut.Mouse.CLICK, function(ev) {
+          root.selectedSocket = _this;
+            _this.showDialog();
+        })};
 
     this.showDialog = function() {
         if(!_this.dialog){
@@ -39,14 +47,8 @@ function Socket(x, y, root) {
 
 
     this.initializeCutOb = function () {
-        Cut.image(this.image).appendTo(this.root).pin({
-            scaleMode : 'in',
-            offsetX : this.x,
-            offsetY : this.y
-        }).on(Cut.Mouse.CLICK, function(ev) {
-            root.selectedSocket = _this;
-            _this.showDialog();
-        })};
+
+
     }
 
 }
