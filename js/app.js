@@ -71,11 +71,11 @@ Cut(function(root, container) {
         // total time
         time += t;
 
+        updateUi();
+
         monsters.forEach(function(monster){
            monster.tick(t, time);
         });
-
-        updateUi();
 
         return true;
     });
@@ -92,9 +92,7 @@ Cut(function(root, container) {
     }
 
     function updateUi(){
-        monsters.forEach(function(monster){
-            monster.draw();
-        })
+
     }
 
     draw();
