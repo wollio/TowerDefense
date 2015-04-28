@@ -16,11 +16,15 @@ function Socket(x, y, root) {
         if (!_this.dialog) {
             _this.dialog = new Dialog(_this.x - 48, _this.y - 48, _this.root);
         }
-        _this.dialog.toggle(_this);
+        if(_this.tower){
+            _this.dialog.toggle(_this,'EDIT');
+        }else {
+            _this.dialog.toggle(_this, 'BUILD');
+        }
     };
 
-    this.buildTower = function (option) {
-        switch (option) {
+    this.buildTower = function (optionValue,option) {
+        switch (optionValue) {
             case 'MAGIC':
                 _this.tower = new MagicTower(this.x,this.y,this.root);
                 _this.tower.draw();
@@ -48,9 +52,8 @@ function Socket(x, y, root) {
             offsetX: this.x,
             offsetY: this.y
         }).on(Cut.Mouse.CLICK, function (ev) {
-            root.selectedSocket = _this;
             _this.showDialog();
-        })
+        });
     };
 
 }

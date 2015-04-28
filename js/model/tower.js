@@ -10,7 +10,7 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
         Cut.image(this.image).appendTo(this.root).pin({
             offsetX: this.x,
             offsetY: this.y
-        })
+        });
     };
 
     this.upgrade = function () {
