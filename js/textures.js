@@ -84,13 +84,17 @@ Cut({
     }
 );
 
-
-
+Cut({
+    image: 'img/rabauke.png',
+    textures : {
+        rabauke : {x : 0, y : 0, width: 36, height: 56 }
+    }
+});
 
 // Adding a texture
 Cut({
     image : 'img/standard.png',
     textures : {
-        map : { x : 16, y : 1, width : 800, height : 621 }
+        map : { x : 18, y : 1, width : 800, height : 621 }
     }
 });
