@@ -1,13 +1,52 @@
 Cut({
-    name : "tower",
-    imagePath : "img/base.png",
-    cutouts : [
-        {
-            name : "magic", x : 0, y : 0, width : 1, height : 1
-        }
-    ]
-}
+        name : "ftower",
+        imagePath : "img/firetower.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter : function(cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts : [
+            {
+                name : "fire", x : 0, y : 0, width : 1, height : 1
+            }
+        ]
+    }
 );
+Cut({
+        name : "mtower",
+        imagePath : "img/magictower.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter : function(cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts : [
+            {
+                name : "magic", x : 0, y : 0, width : 1, height : 1
+            }
+        ]
+    }
+);
+Cut({
+        name : "itower",
+        imagePath : "img/icetower.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter : function(cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts : [
+            {
+                name : "ice", x : 0, y : 0, width : 1, height : 1
+            }
+        ]
+    }
+);
+
 
 
 Cut({
@@ -44,6 +83,9 @@ Cut({
         ]
     }
 );
+
+
+
 
 // Adding a texture
 Cut({
