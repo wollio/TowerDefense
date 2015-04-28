@@ -1,15 +1,18 @@
 function Monster(x, y, health, speed, image, root) {
+    var _this = this;
+    this.root = root;
     this.x = x;
     this.y = y;
     this.health = health;
     this.speed = speed;
     this.image = image;
+    this.self = undefined;
 
     this.move = function() {
-        this.x = this.x + this.speed;
+
     };
     this.draw = function() {
-        Cut.image(this.image).appendTo(this.root).pin({
+        _this.self = Cut.image(this.image).appendTo(this.root).pin({
             scale : 0.5,
             offsetX : this.x,
             offsetY : this.y
