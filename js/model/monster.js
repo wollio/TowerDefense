@@ -9,7 +9,7 @@ function Monster(x, y, health, speed, image, root) {
     this.self = undefined;
 
     this.move = function() {
-        _this.self.pin({offsetX: 30, offsetY: 30});
+
     };
     this.draw = function() {
         _this.self = Cut.image(this.image).appendTo(this.root).pin({
