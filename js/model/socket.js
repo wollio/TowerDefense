@@ -6,10 +6,12 @@ function Socket(x, y, root) {
     this.root = root;
     this.draw = function() {
         Cut.image(this.image).appendTo(this.root).pin({
+            scaleMode : 'in',
             offsetX : this.x,
             offsetY : this.y
         }).on(Cut.Mouse.CLICK, function(ev) {
           root.selectedSocket = _this;
+            console.log(_this);
         })};
 
     this.buildTower = function(towertype) {
