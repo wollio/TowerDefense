@@ -1,5 +1,3 @@
-
-
 Cut(function(root, container) {
 
     /**
@@ -11,6 +9,7 @@ Cut(function(root, container) {
      * game objects
      * */
     var monsters = [];
+    var towers = [];
     var bullets = [];
     var sockels = [];
 
@@ -19,6 +18,7 @@ Cut(function(root, container) {
      * */
     var life = 0;
     var score = 0;
+    var time = 0;
 
     Cut.Mouse(root, container);
 
@@ -44,10 +44,44 @@ Cut(function(root, container) {
             scaleWidth : root.pin('width'),
             scaleHeight : root.pin('height')
         });
-    }).appendTo(playview);
+    });
+
+    //Startgamefunction
+    function play(){
+
+        life = LIFE;
+        score = 0;
+
+        for(i = 0; i < 1; i++) {
+            monsters.push(new Rabauke(2, 360, map));
+        }
+
+        map.appendTo(playview);
+    }
+
+    //start the game
+    play();
+
+    //Gameloop
+    map.tick(function(t) {
+
+        //avoid jumps
+        t = Math.min(t, 100);
+
+        // total time
+        time += t;
+
+        monsters.forEach(function(monster){
+           monster.tick(t, time);
+        });
+
+        updateUi();
+
+        return true;
+    });
 
     var sockets = [new Socket(100,430,map),new Socket(230,280,map),new Socket(356,235,map),
-        new Socket(435,325,map), new Socket(580,385,map)]
+        new Socket(435,325,map), new Socket(580,385,map)];
 
 
     function draw(ev) {
@@ -56,13 +90,13 @@ Cut(function(root, container) {
         });
 
     }
-    draw();
 
-    function play(){
-        life = LIFE;
-        score = 0;
-
+    function updateUi(){
+        monsters.forEach(function(monster){
+            monster.draw();
+        })
     }
 
+    draw();
 
 });
