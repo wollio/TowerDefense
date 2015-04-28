@@ -108,6 +108,23 @@ Cut({
     }
 );
 
+Cut({
+        name: "cash",
+        imagePath: "img/cash.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter: function (cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts: [
+            {
+                name: "cash", x: 0, y: 0, width: 1, height: 1
+            }
+        ]
+    }
+);
+
 
 // Adding a texture
 Cut({

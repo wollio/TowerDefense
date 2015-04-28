@@ -41,14 +41,14 @@ function Dialog(x, y, root) {
                 var fire = Cut.image('upgrade:upgrade').appendTo(_this.root).pin({
                     scaleMode: 'in',
                     offsetX: this.x + 50,
-                    offsetY: this.y
+                    offsetY: this.y + 9
                 }).on(Cut.Mouse.CLICK, function (ev) {
 
                 });
                 var magic = Cut.image('cash:cash').appendTo(_this.root).pin({
                     scaleMode: 'in',
                     offsetX: this.x + 50,
-                    offsetY: this.y + 80
+                    offsetY: this.y + 92
                 }).on(Cut.Mouse.CLICK, function (ev) {
 
                 });
