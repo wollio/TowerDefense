@@ -37,7 +37,7 @@ Cut(function(root, container) {
     });
 
     //Background
-    var bg = Cut.image('map').pin('align', 0.5).on('viewport', function() {
+    var map = Cut.image('map').pin('align', 0.5).on('viewport', function() {
         // on viewport change scale it to fill root
         this.pin({
             scaleMode : 'in',
@@ -46,8 +46,8 @@ Cut(function(root, container) {
         });
     }).appendTo(playview);
 
-    var sockets = [new Socket(100,430,bg),new Socket(230,280,bg),new Socket(356,235,bg),
-        new Socket(435,325,bg), new Socket(580,385,bg)]
+    var sockets = [new Socket(100,430,map),new Socket(230,280,map),new Socket(356,235,map),
+        new Socket(435,325,map), new Socket(580,385,map)]
 
 
     function draw(ev) {

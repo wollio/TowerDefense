@@ -27,6 +27,24 @@ Cut({
     }
 );
 
+
+Cut({
+        name : "dialog",
+        imagePath : "img/dialog.png",
+        imageRatio : 8,
+        ratio : 128,
+        filter : function(cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts : [
+            {
+                name : "standard", x : 0, y : 0, width : 1, height : 1
+            }
+        ]
+    }
+);
+
 // Adding a texture
 Cut({
     image : 'img/standard.png',
