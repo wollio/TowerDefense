@@ -8,9 +8,9 @@ function Dialog(x, y, root) {
     this.cutobj = undefined;
     this.isVisible = false;
     this.options = [];
-    this.toggle = function () {
+    this.toggle = function (socket) {
         if(!this.cutobj){
-           this.initializeCutOb();
+           this.initializeCutOb(socket);
         }
         if (!_this.isVisible) {
             _this.isVisible = true;
@@ -34,7 +34,7 @@ function Dialog(x, y, root) {
     };
 
 
-    this.initializeCutOb = function () {
+    this.initializeCutOb = function (socket) {
        _this.cutobj = Cut.image(this.image).appendTo(this.root).pin({
             scaleMode: 'in',
             offsetX: this.x,
@@ -45,18 +45,21 @@ function Dialog(x, y, root) {
             offsetX: this.x + 50,
             offsetY: this.y + 9
         }).on(Cut.Mouse.CLICK, function (ev) {
+            socket.buildTower('FIRE');
         });
         var magic =Cut.image('mtower:magic').appendTo(_this.root).pin({
             scaleMode: 'in',
             offsetX: this.x + 87,
             offsetY: this.y + 70
         }).on(Cut.Mouse.CLICK, function (ev) {
+            socket.buildTower('MAGIC');
         });
         var ice = Cut.image('itower:ice').appendTo(_this.root).pin({
             scaleMode: 'in',
             offsetX: this.x + 15,
             offsetY: this.y + 70
         }).on(Cut.Mouse.CLICK, function (ev) {
+            socket.buildTower('ICE');
         });
         _this.options.push(fire);
         _this.options.push(magic);
