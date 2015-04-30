@@ -52,8 +52,8 @@ Cut(function(root, container) {
         life = LIFE;
         score = 0;
 
-        for(i = 0; i < 1; i++) {
-            monsters.push(new Rabauke(2, 360, map));
+        for(i = 0; i < 300; i++) {
+            monsters.push(new Rabauke(2-i*15, 360, map));
         }
 
         map.appendTo(playview);
@@ -85,9 +85,14 @@ Cut(function(root, container) {
 
 
     function draw(ev) {
+
         sockets.forEach(function(socket){
-        socket.draw();
+            socket.draw();
         });
+
+        monsters.forEach(function(monster){
+            monster.draw();
+        })
 
     }
 
