@@ -85,6 +85,20 @@ Cut({
 );
 
 Cut({
+    image: 'img/vasall.png',
+    textures : {
+        vasall : {x : 0, y : 0, width: 41, height: 40 }
+    }
+});
+
+Cut({
+    image: 'img/tanglin.png',
+    textures : {
+        tanglin : {x : 0, y : 0, width: 47, height: 64 }
+    }
+});
+
+Cut({
     image: 'img/rabauke.png',
     textures : {
         rabauke : {x : 0, y : 0, width: 36, height: 56 }

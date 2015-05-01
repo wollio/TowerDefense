@@ -1,4 +1,4 @@
-function Monster(x, y, health, speed, image, root) {
+function Monster(x, y, health, speed, image, root, target) {
     var _this = this;
     this.root = root;
     this.x = x;
@@ -7,10 +7,10 @@ function Monster(x, y, health, speed, image, root) {
     this.speed = speed;
     this.image = image;
     this.self = undefined;
+    this.target = target;
 
     this.move = function() {
-        _this.self.pin('offsetX', _this.self.pin('offsetX') + Math.random());
-        _this.self.pin('offsetY', _this.self.pin('offsetY'));
+        _this.self.pin('offsetX', _this.self.pin('offsetX') + this.speed);
     };
 
     this.draw = function() {
@@ -30,6 +30,22 @@ function Rabauke(x, y, root) {
     this.speed = 0.3;
     this.root = root;
     this.image = 'rabauke';
+    Monster.call(this, x, y, this.health, this.speed, this.image, this.root);
+}
+
+function Tanglin(x, y, root) {
+    this.health = 150;
+    this.speed = 0.2;
+    this.root = root;
+    this.image = 'tanglin';
+    Monster.call(this, x, y, this.health, this.speed, this.image, this.root);
+}
+
+function Vasall(x, y, root) {
+    this.health = 80;
+    this.speed = 0.6;
+    this.root = root;
+    this.image = 'vasall';
     Monster.call(this, x, y, this.health, this.speed, this.image, this.root);
 }
 

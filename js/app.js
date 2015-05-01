@@ -52,8 +52,10 @@ Cut(function(root, container) {
         life = LIFE;
         score = 0;
 
-        for(i = 0; i < 300; i++) {
+        for(i = 0; i < 3; i++) {
             monsters.push(new Rabauke(2-i*15, 360, map));
+            monsters.push(new Tanglin(2-i*15, 360, map));
+            monsters.push(new Vasall(2-i*15, 360, map));
         }
 
         map.appendTo(playview);
