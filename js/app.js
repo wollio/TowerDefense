@@ -12,6 +12,7 @@ Cut(function(root, container) {
     var towers = [];
     var bullets = [];
     var sockels = [];
+    var ways = [];
 
     /**
      * game state
@@ -52,10 +53,24 @@ Cut(function(root, container) {
         life = LIFE;
         score = 0;
 
+        //Der Weg muss rückwärts initialisiert werden.
+        ways.push(new Way(750, 400, null, true, map));
+        ways.push(new Way(610, 400, ways[0], false, map));
+        ways.push(new Way(610, 350, ways[1], false, map));
+        ways.push(new Way(400, 350, ways[2], false, map));
+        ways.push(new Way(400, 210, ways[3], false, map));
+        ways.push(new Way(300, 210, ways[4], false, map));
+        ways.push(new Way(300, 305, ways[5], false, map));
+        ways.push(new Way(150, 305, ways[6], false, map));
+        ways.push(new Way(150, 450, ways[7], false, map));
+        ways.push(new Way(50, 450, ways[8], false, map));
+        ways.push(new Way(50, 360, ways[9], false, map));
+
+        //monsters.push(new Tanglin(15, 360, map, ways[10]));
         for(i = 0; i < 3; i++) {
-            monsters.push(new Rabauke(2-i*15, 360, map));
-            monsters.push(new Tanglin(2-i*15, 360, map));
-            monsters.push(new Vasall(2-i*15, 360, map));
+            monsters.push(new Rabauke(2-i*15, 360, map, ways[10]));
+            monsters.push(new Tanglin(2-i*15, 360, map, ways[10]));
+            monsters.push(new Vasall(2-i*15, 360, map, ways[10]));
         }
 
         map.appendTo(playview);
@@ -92,9 +107,14 @@ Cut(function(root, container) {
             socket.draw();
         });
 
+        ways.forEach(function(way){
+            way.draw();
+        });
+
         monsters.forEach(function(monster){
             monster.draw();
-        })
+        });
+
 
     }
 

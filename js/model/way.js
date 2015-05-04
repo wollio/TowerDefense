@@ -1,12 +1,28 @@
 /**
  * Ein Wegelement, welches dazu dient Richtungsänderungen auf dem Weg zu markieren.
  * */
-function Way(x, y, target) {
+function Way(x, y, target, end, root) {
     this.x = x;
     this.y = y;
     this.target = target;
+    this.end = end;
+    this.root = root;
+
+    this.image = 'way';
 
     this.tick = function(t, time) {
 
+    };
+
+    this.isEnd = function() {
+        return this.end;
+    }
+
+    this.draw = function () {
+        Cut.image(this.image).appendTo(this.root).pin({
+            scale : 0.5,
+            offsetX: this.x,
+            offsetY: this.y
+        });
     };
 }

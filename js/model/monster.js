@@ -8,9 +8,31 @@ function Monster(x, y, health, speed, image, root, target) {
     this.image = image;
     this.self = undefined;
     this.target = target;
+    this.xGo = undefined;
+    this.yGo = undefined;
 
     this.move = function() {
-        _this.self.pin('offsetX', _this.self.pin('offsetX') + this.speed);
+
+        //Weg berechnen
+        if(this.xGo == undefined || this.yGo == undefined && this.target != undefined){
+            differenceX = this.target.x - Math.round(this.self.pin('offsetX'));
+            differenceY = this.target.y - Math.round(this.self.pin('offsetY'));
+            way = Math.sqrt((differenceX * differenceX) + (differenceY * differenceY));
+            stepsize = way/this.speed;
+            this.xGo = differenceX/stepsize;
+            this.yGo = differenceY/stepsize
+        }
+        _this.self.pin('offsetX', _this.self.pin('offsetX') + this.xGo);
+        this.self.pin('offsetY', _this.self.pin('offsetY') + this.yGo);
+
+        if(Math.round(this.self.pin('offsetX')) == this.target.x && Math.round(this.self.pin('offsetY')) == this.target.y){
+            _this.self.pin('offsetX', Math.round(this.self.pin('offsetX')));
+            _this.self.pin('offsetY', Math.round(this.self.pin('offsetY')));
+            this.target = this.target.target;
+            this.xGo = undefined;
+            this.yGo = undefined;
+        }
+
     };
 
     this.draw = function() {
@@ -25,28 +47,31 @@ function Monster(x, y, health, speed, image, root, target) {
     }
 }
 
-function Rabauke(x, y, root) {
+function Rabauke(x, y, root, target) {
     this.health = 100;
     this.speed = 0.3;
     this.root = root;
+    this.target = target;
     this.image = 'rabauke';
-    Monster.call(this, x, y, this.health, this.speed, this.image, this.root);
+    Monster.call(this, x, y, this.health, this.speed, this.image, this.root, this.target);
 }
 
-function Tanglin(x, y, root) {
+function Tanglin(x, y, root, target) {
     this.health = 150;
     this.speed = 0.2;
     this.root = root;
+    this.target = target;
     this.image = 'tanglin';
-    Monster.call(this, x, y, this.health, this.speed, this.image, this.root);
+    Monster.call(this, x, y, this.health, this.speed, this.image, this.root, this.target);
 }
 
-function Vasall(x, y, root) {
+function Vasall(x, y, root, target) {
     this.health = 80;
     this.speed = 0.6;
     this.root = root;
+    this.target = target;
     this.image = 'vasall';
-    Monster.call(this, x, y, this.health, this.speed, this.image, this.root);
+    Monster.call(this, x, y, this.health, this.speed, this.image, this.root, this.target);
 }
 
 
