@@ -111,6 +111,10 @@ Cut(function(root, container) {
         sockets.forEach(function(socket){
             if(socket.tower) {
                 socket.tower.tick(t, time, monsters);
+                if(socket.tower.firedBullet){
+                    socket.tower.firedBullet.tick();
+
+                }
             }
         });
 

@@ -7,6 +7,7 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
     this.image = image;
     this.root = root;
     this.time = 0;
+    this.firedBullet = undefined;
     var _this = this;
     this.draw = function () {
         Cut.image(this.image).appendTo(this.root).pin({
@@ -23,15 +24,14 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
         monsters.forEach(function (monster) {
             if (_this.isInRange(monster)) {
                 _this.shoot(monster);
+                console.log('shoot');
             }
         });
     };
 
     this.shoot = function (target) {
-        var bullet = new Bullet(_this.x,_this.y,target,_this,3,_this.root);
-        bullet.draw();
-        bullet.tick();
-
+        _this.firedBullet = new Bullet(_this.x,_this.y, target,_this,3,_this.root);
+        _this.firedBullet.draw();
     };
     this.isInRange = function (monster) {
         var dx = _this.x - monster.x;
@@ -42,7 +42,7 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
 
 
     this.tick = function (t, time, monsters) {
-        if (_this.time > _this.attackspeed) {
+        if (_this.time > _this.attackspeed && !_this.firedBullet) {
             this.checkRangeCollision(monsters);
             _this.time = 0;
         } else {
