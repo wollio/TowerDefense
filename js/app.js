@@ -94,6 +94,12 @@ Cut(function(root, container) {
            monster.tick(t, time);
         });
 
+        sockets.forEach(function(socket){
+            if(socket.tower) {
+                socket.tower.tick(t, time, monsters);
+            }
+        });
+
         return true;
     });
 
