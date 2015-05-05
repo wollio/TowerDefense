@@ -24,14 +24,11 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
             if (_this.isInRange(monster)) {
                 _this.shoot(monster);
             }
-
-
         });
-
     };
 
     this.shoot = function (target) {
-        console.log('################BUUUUUUUUUUUUUUUUUUM');
+
     };
     this.isInRange = function (monster) {
         var dx = _this.x - monster.x;
