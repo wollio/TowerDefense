@@ -28,6 +28,9 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
     };
 
     this.shoot = function (target) {
+        var bullet = new Bullet(_this.x,_this.y,target,_this,3,_this.root);
+        bullet.draw();
+        bullet.tick();
 
     };
     this.isInRange = function (monster) {
