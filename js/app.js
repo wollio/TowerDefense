@@ -67,9 +67,9 @@ Cut(function(root, container) {
         ways.push(new Way(50, 360, ways[9], false, map));
 
         //monsters.push(new Tanglin(15, 360, map, ways[10]));
-        for(i = 0; i < 1; i++) {
-            //monsters.push(new Rabauke(2-i*50, 360, map, ways[10]));
-            //monsters.push(new Tanglin(2-i*70, 360, map, ways[10]));
+        for(i = 0; i < 35; i++) {
+            monsters.push(new Rabauke(2-i*50, 360, map, ways[10]));
+            monsters.push(new Tanglin(2-i*70, 360, map, ways[10]));
             monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
         }
 
