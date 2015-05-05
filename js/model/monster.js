@@ -25,12 +25,20 @@ function Monster(x, y, health, speed, image, root, target) {
         _this.self.pin('offsetX', _this.self.pin('offsetX') + this.xGo);
         this.self.pin('offsetY', _this.self.pin('offsetY') + this.yGo);
 
+        //if monster touch target
         if(Math.round(this.self.pin('offsetX')) == this.target.x && Math.round(this.self.pin('offsetY')) == this.target.y){
             _this.self.pin('offsetX', Math.round(this.self.pin('offsetX')));
             _this.self.pin('offsetY', Math.round(this.self.pin('offsetY')));
-            this.target = this.target.target;
-            this.xGo = undefined;
-            this.yGo = undefined;
+
+            if(this.target.isEnd()){
+                _this.self.remove();
+                return true;
+            } else {
+                this.target = this.target.target;
+                this.xGo = undefined;
+                this.yGo = undefined;
+                return false;
+            }
         }
 
     };
@@ -43,7 +51,7 @@ function Monster(x, y, health, speed, image, root, target) {
         })
     };
     this.tick = function(t, time) {
-        this.move();
+        return this.move();
     }
 }
 

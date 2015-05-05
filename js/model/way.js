@@ -19,10 +19,21 @@ function Way(x, y, target, end, root) {
     }
 
     this.draw = function () {
-        Cut.image(this.image).appendTo(this.root).pin({
-            scale : 0.5,
-            offsetX: this.x,
-            offsetY: this.y
-        });
+        if(this.end){
+            this.image = 'castle';
+            Cut.image(this.image).appendTo(this.root).pin({
+                scale : 0.15,
+                offsetX: this.x,
+                offsetY: this.y
+            });
+            this.y = this.y + 80;
+        } else {
+            Cut.image(this.image).appendTo(this.root).pin({
+                scale : 0.5,
+                offsetX: this.x,
+                offsetY: this.y
+            });
+        }
+
     };
 }

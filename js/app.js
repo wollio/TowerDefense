@@ -54,20 +54,20 @@ Cut(function(root, container) {
         score = 0;
 
         //Der Weg muss rückwärts initialisiert werden.
-        ways.push(new Way(750, 400, null, true, map));
+        ways.push(new Way(690, 330, null, true, map));
         ways.push(new Way(610, 400, ways[0], false, map));
         ways.push(new Way(610, 350, ways[1], false, map));
         ways.push(new Way(400, 350, ways[2], false, map));
         ways.push(new Way(400, 210, ways[3], false, map));
         ways.push(new Way(300, 210, ways[4], false, map));
-        ways.push(new Way(300, 305, ways[5], false, map));
-        ways.push(new Way(150, 305, ways[6], false, map));
-        ways.push(new Way(150, 450, ways[7], false, map));
-        ways.push(new Way(50, 550, ways[8], false, map));
+        ways.push(new Way(300, 315, ways[5], false, map));
+        ways.push(new Way(150, 315, ways[6], false, map));
+        ways.push(new Way(150, 465, ways[7], false, map));
+        ways.push(new Way(50, 465, ways[8], false, map));
         ways.push(new Way(50, 360, ways[9], false, map));
 
         //monsters.push(new Tanglin(15, 360, map, ways[10]));
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 35; i++) {
             monsters.push(new Rabauke(2-i*50, 360, map, ways[10]));
             monsters.push(new Tanglin(2-i*70, 360, map, ways[10]));
             monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
@@ -88,11 +88,21 @@ Cut(function(root, container) {
         // total time
         time += t;
 
-        updateUi();
-
+        //TODO not so beautiful ;-)
         monsters.forEach(function(monster){
-           monster.tick(t, time);
+           if(monster.tick(t, time)){
+               life -= 1;
+               console.log(life);
+               var index = monsters.indexOf(monster);
+               if (index > -1) {
+                   monsters.splice(index, 1);
+               }
+           }
         });
+
+        if(life <= 0){
+            gameover();
+        }
 
         return true;
     });
@@ -118,8 +128,9 @@ Cut(function(root, container) {
 
     }
 
-    function updateUi(){
-
+    function gameover(){
+        alert("looser!");
+        Cut.pause();
     }
 
     draw();

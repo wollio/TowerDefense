@@ -146,6 +146,13 @@ Cut({
     }
 );
 
+// Adding a texture
+Cut({
+    image : 'img/castle.png',
+    textures : {
+        castle : { x : 0, y : 0, width : 800, height : 786 }
+    }
+});
 
 // Adding a texture
 Cut({
