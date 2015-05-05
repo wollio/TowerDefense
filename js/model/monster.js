@@ -49,7 +49,7 @@ function Monster(x, y, health, speed, image, root, target) {
 
 function Rabauke(x, y, root, target) {
     this.health = 100;
-    this.speed = 0.3;
+    this.speed = 0.7;
     this.root = root;
     this.target = target;
     this.image = 'rabauke';
@@ -58,7 +58,7 @@ function Rabauke(x, y, root, target) {
 
 function Tanglin(x, y, root, target) {
     this.health = 150;
-    this.speed = 0.2;
+    this.speed = 0.5;
     this.root = root;
     this.target = target;
     this.image = 'tanglin';
@@ -67,7 +67,7 @@ function Tanglin(x, y, root, target) {
 
 function Vasall(x, y, root, target) {
     this.health = 80;
-    this.speed = 0.6;
+    this.speed = 1.0;
     this.root = root;
     this.target = target;
     this.image = 'vasall';

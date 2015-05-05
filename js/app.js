@@ -63,14 +63,14 @@ Cut(function(root, container) {
         ways.push(new Way(300, 305, ways[5], false, map));
         ways.push(new Way(150, 305, ways[6], false, map));
         ways.push(new Way(150, 450, ways[7], false, map));
-        ways.push(new Way(50, 450, ways[8], false, map));
+        ways.push(new Way(50, 550, ways[8], false, map));
         ways.push(new Way(50, 360, ways[9], false, map));
 
         //monsters.push(new Tanglin(15, 360, map, ways[10]));
         for(i = 0; i < 3; i++) {
-            monsters.push(new Rabauke(2-i*15, 360, map, ways[10]));
-            monsters.push(new Tanglin(2-i*15, 360, map, ways[10]));
-            monsters.push(new Vasall(2-i*15, 360, map, ways[10]));
+            monsters.push(new Rabauke(2-i*50, 360, map, ways[10]));
+            monsters.push(new Tanglin(2-i*70, 360, map, ways[10]));
+            monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
         }
 
         map.appendTo(playview);
