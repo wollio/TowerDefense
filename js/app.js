@@ -17,9 +17,10 @@ Cut(function(root, container) {
     /**
      * game state
      * */
-    var life = 0;
+
     var score = 0;
     var time = 0;
+    var life = 0;
 
     Cut.Mouse(root, container);
 
@@ -50,7 +51,11 @@ Cut(function(root, container) {
     //Startgamefunction
     function play(){
 
-        life = LIFE;
+        life = Cut.string('numbers:digit').value(LIFE).pin({
+            offsetX : 30,
+            offsetY : 30,
+            scale : 3
+        }).appendTo(map);
         score = 0;
 
         //Der Weg muss rückwärts initialisiert werden.
@@ -91,8 +96,7 @@ Cut(function(root, container) {
         //TODO not so beautiful ;-)
         monsters.forEach(function(monster){
            if(monster.tick(t, time)){
-               life -= 1;
-               console.log(life);
+               life.value(life.value() - 1);
                var index = monsters.indexOf(monster);
                if (index > -1) {
                    monsters.splice(index, 1);
@@ -100,7 +104,7 @@ Cut(function(root, container) {
            }
         });
 
-        if(life <= 0){
+        if(life.value() <= 0){
             gameover();
         }
 

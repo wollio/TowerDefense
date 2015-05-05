@@ -37,7 +37,6 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
         var dx = _this.x - monster.x;
         var dy = _this.y - monster.y;
         var distance = Math.sqrt(dx * dx + dy * dy);
-        console.log(distance);
         return (distance < _this.range);
     };
 
