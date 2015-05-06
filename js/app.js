@@ -11,7 +11,7 @@ Cut(function(root, container) {
     var monsters = [];
     var towers = [];
     var bullets = [];
-    var sockels = [];
+    var sockets = [];
     var ways = [];
 
     /**
@@ -21,6 +21,13 @@ Cut(function(root, container) {
     var score = 0;
     var time = 0;
     var life = 0;
+    var wave = 0;
+
+    /**
+     * buttons
+     * */
+
+    var playbtn;
 
     Cut.Mouse(root, container);
 
@@ -49,14 +56,33 @@ Cut(function(root, container) {
     });
 
     //Startgamefunction
-    function play(){
+    function buildMap(){
 
+        //Set lifepoints on map
         life = Cut.string('numbers:digit').value(LIFE).pin({
             offsetX : 30,
             offsetY : 30,
             scale : 3
         }).appendTo(map);
+
+        //reset score
         score = 0;
+
+        //show start button
+        playbtn = Cut.image('playbtn').pin({
+            offsetX : 740,
+            offsetY : 20,
+            scale : 0.1
+        }).on(Cut.Mouse.CLICK, function(){
+            nextWave();
+            playbtn.hide();
+        }).appendTo(map);
+
+
+
+
+        sockets = [new Socket(100,430,map),new Socket(230,280,map),new Socket(356,235,map),
+            new Socket(435,325,map), new Socket(580,385,map)];
 
         //Der Weg muss rückwärts initialisiert werden.
         ways.push(new Way(690, 330, null, true, map));
@@ -71,18 +97,12 @@ Cut(function(root, container) {
         ways.push(new Way(50, 465, ways[8], false, map));
         ways.push(new Way(50, 360, ways[9], false, map));
 
-        //monsters.push(new Tanglin(15, 360, map, ways[10]));
-        for(i = 0; i < 35; i++) {
-            monsters.push(new Rabauke(2-i*50, 360, map, ways[10]));
-            monsters.push(new Tanglin(2-i*70, 360, map, ways[10]));
-            monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
-        }
-
         map.appendTo(playview);
+
     }
 
     //start the game
-    play();
+    buildMap();
 
     //Gameloop
     map.tick(function(t) {
@@ -118,11 +138,24 @@ Cut(function(root, container) {
             }
         });
 
+        if(monsters.length <= 0){
+            playbtn.show();
+        }
+
         return true;
     });
 
-    var sockets = [new Socket(100,430,map),new Socket(230,280,map),new Socket(356,235,map),
-        new Socket(435,325,map), new Socket(580,385,map)];
+    function nextWave(){
+        wave = wave+1;
+        for(i = 0; i < wave; i++){
+            monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
+        }
+
+        monsters.forEach(function(monster){
+            monster.draw();
+        });
+
+    }
 
 
     function draw(ev) {
@@ -133,10 +166,6 @@ Cut(function(root, container) {
 
         ways.forEach(function(way){
             way.draw();
-        });
-
-        monsters.forEach(function(monster){
-            monster.draw();
         });
 
 

@@ -194,6 +194,14 @@ Cut({
     }
 });
 
+// Adding a texture
+Cut({
+    image : 'img/play.png',
+    textures : {
+        playbtn : { x : 0, y : 0, width : 321, height : 321 }
+    }
+});
+
 
 // Adding a texture
 Cut({
