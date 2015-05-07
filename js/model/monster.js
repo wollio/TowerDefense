@@ -40,7 +40,6 @@ function Monster(x, y, health, speed, image, root, target) {
                 this.target = this.target.target;
                 this.xGo = undefined;
                 this.yGo = undefined;
-                return false;
             }
         }
 
@@ -54,6 +53,10 @@ function Monster(x, y, health, speed, image, root, target) {
         })
     };
     this.tick = function(t, time) {
+        if(_this.health <= 0){
+            _this.self.remove();
+            return false;
+        }
         return this.move();
     }
 }

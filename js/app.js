@@ -115,13 +115,19 @@ Cut(function(root, container) {
 
         //TODO not so beautiful ;-)
         monsters.forEach(function(monster){
-           if(monster.tick(t, time)){
+           result = monster.tick(t, time);
+            if(result){
                life.value(life.value() - 1);
                var index = monsters.indexOf(monster);
                if (index > -1) {
                    monsters.splice(index, 1);
                }
-           }
+           } else if (result == false){
+                var index = monsters.indexOf(monster);
+                if (index > -1) {
+                    monsters.splice(index, 1);
+                }
+            }
         });
 
         if(life.value() <= 0){
@@ -130,12 +136,17 @@ Cut(function(root, container) {
 
         sockets.forEach(function(socket){
             if(socket.tower) {
-                socket.tower.tick(t, time, monsters);
-                if(socket.tower.firedBullet){
-                    socket.tower.firedBullet.tick();
-
+                var bullet = socket.tower.tick(t, time, monsters)
+                if(bullet != undefined){
+                    var bullet = new Bullet(bullet.x, bullet.y, bullet.target, 2.5, map, bullet.damage);
+                    bullet.draw();
+                    bullets.push(bullet);
                 }
             }
+        });
+
+        bullets.forEach(function(bullet){
+           bullet.tick(t, time);
         });
 
         if(monsters.length <= 0){
@@ -148,7 +159,9 @@ Cut(function(root, container) {
     function nextWave(){
         wave = wave+1;
         for(i = 0; i < wave; i++){
+            monsters.push(new Tanglin(2-i*60, 360, map, ways[10]));
             monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
+            monsters.push(new Rabauke(2-i*60, 360, map, ways[10]));
         }
 
         monsters.forEach(function(monster){
