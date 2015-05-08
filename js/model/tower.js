@@ -54,7 +54,7 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
 
 function MagicTower(x, y, root) {
     this.attackspeed = 50;
-    this.damage = 1;
+    this.damage = 10;
     this.range = 100;
     this.root = root;
     this.image = 'mtower:magic';
@@ -62,8 +62,8 @@ function MagicTower(x, y, root) {
 }
 
 function FireTower(x, y, root) {
-    this.attackspeed = 800;
-    this.damage = 10;
+    this.attackspeed = 1500;
+    this.damage = 40;
     this.range = 100;
     this.root = root;
     this.image = "ftower:fire";
@@ -71,8 +71,8 @@ function FireTower(x, y, root) {
 }
 
 function IceTower(x, y, root) {
-    this.attackspeed = 500;
-    this.damage = 10;
+    this.attackspeed = 1000;
+    this.damage = 20;
     this.range = 100;
     this.root = root;
     this.image = "itower:ice";

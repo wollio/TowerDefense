@@ -141,12 +141,18 @@ Cut(function(root, container) {
                     var bullet = new Bullet(bullet.x, bullet.y, bullet.target, 2.5, map, bullet.damage);
                     bullet.draw();
                     bullets.push(bullet);
+                    console.log(bullets);
                 }
             }
         });
 
         bullets.forEach(function(bullet){
-           bullet.tick(t, time);
+           if(bullet.tick(t, time)){
+               var index = bullets.indexOf(bullet);
+               if(index > -1){
+                   bullets.splice(index, 1);
+               }
+           }
         });
 
         if(monsters.length <= 0){
@@ -169,7 +175,6 @@ Cut(function(root, container) {
         });
 
     }
-
 
     function draw(ev) {
 
