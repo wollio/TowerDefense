@@ -22,6 +22,7 @@ Cut(function(root, container) {
     var time = 0;
     var life = 0;
     var wave = 0;
+    var money = 0;
 
     /**
      * buttons
@@ -60,13 +61,33 @@ Cut(function(root, container) {
 
         //Set lifepoints on map
         life = Cut.string('numbers:digit').value(LIFE).pin({
-            offsetX : 30,
+            offsetX : 40,
             offsetY : 30,
             scale : 3
         }).appendTo(map);
 
+        //reset life
+        life.value(LIFE);
+
+        //Set score on map
+        score = Cut.string('numbers:digit').value(LIFE).pin({
+            offsetX : 40,
+            offsetY : 55,
+            scale : 3
+        }).appendTo(map);
+
         //reset score
-        score = 0;
+        score.value(0);
+
+        //Set money on map
+        money = Cut.string('numbers:digit').value(LIFE).pin({
+            offsetX : 40,
+            offsetY : 80,
+            scale : 3
+        }).appendTo(map);
+
+        //reset money
+        money.value(0);
 
         //show start button
         playbtn = Cut.image('playbtn').pin({
@@ -77,9 +98,6 @@ Cut(function(root, container) {
             nextWave();
             playbtn.hide();
         }).appendTo(map);
-
-
-
 
         sockets = [new Socket(100,430,map),new Socket(230,280,map),new Socket(356,235,map),
             new Socket(435,325,map), new Socket(580,385,map)];
@@ -123,6 +141,8 @@ Cut(function(root, container) {
                    monsters.splice(index, 1);
                }
            } else if (result == false){
+                score.value(score.value() + 1);
+                money.value(money.value() + monster.health);
                 var index = monsters.indexOf(monster);
                 if (index > -1) {
                     monsters.splice(index, 1);

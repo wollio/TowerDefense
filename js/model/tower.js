@@ -54,7 +54,7 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
 
 function MagicTower(x, y, root) {
     this.attackspeed = 50;
-    this.damage = 10;
+    this.damage = 100;
     this.range = 100;
     this.root = root;
     this.image = 'mtower:magic';
