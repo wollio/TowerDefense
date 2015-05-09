@@ -106,13 +106,6 @@ Cut({
 });
 
 Cut({
-    image: 'img/way.png',
-    textures : {
-        way : {x : 0, y : 0, width: 71, height: 75 }
-    }
-});
-
-Cut({
         name: "upgrade",
         imagePath: "img/upgrade.png",
         imageRatio : 8,

@@ -9,7 +9,6 @@ Cut(function(root, container) {
      * game objects
      * */
     var monsters = [];
-    var towers = [];
     var bullets = [];
     var sockets = [];
     var ways = [];
@@ -17,7 +16,6 @@ Cut(function(root, container) {
     /**
      * game state
      * */
-
     var score = 0;
     var time = 0;
     var life = 0;
@@ -33,13 +31,9 @@ Cut(function(root, container) {
     Cut.Mouse(root, container);
 
     root.viewbox(200, 200);
-    root.on(Cut.Mouse.CLICK, function(ev) {
-        console.log(ev);
-    });
 
     // game play view
     var playview = Cut.create().appendTo(root).on('viewport', function() {
-        this.selectedSocket = {};
         this.pin({
             width : root.pin('width'),
             height : root.pin('height')
@@ -87,7 +81,7 @@ Cut(function(root, container) {
         }).appendTo(map);
 
         //reset money
-        money.value(0);
+        money.value(300);
 
         //show start button
         playbtn = Cut.image('playbtn').pin({
@@ -142,7 +136,7 @@ Cut(function(root, container) {
                }
            } else if (result == false){
                 score.value(score.value() + 1);
-                money.value(money.value() + monster.health);
+                money.value(money.value() - monster.health);
                 var index = monsters.indexOf(monster);
                 if (index > -1) {
                     monsters.splice(index, 1);
@@ -197,7 +191,6 @@ Cut(function(root, container) {
     }
 
     function draw(ev) {
-
         sockets.forEach(function(socket){
             socket.draw();
         });
@@ -205,7 +198,6 @@ Cut(function(root, container) {
         ways.forEach(function(way){
             way.draw();
         });
-
 
     }
 

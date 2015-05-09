@@ -8,15 +8,13 @@ function Way(x, y, target, end, root) {
     this.end = end;
     this.root = root;
 
-    this.image = 'way';
-
     this.tick = function(t, time) {
 
     };
 
     this.isEnd = function() {
         return this.end;
-    }
+    };
 
     this.draw = function () {
         if(this.end){
@@ -27,13 +25,6 @@ function Way(x, y, target, end, root) {
                 offsetY: this.y
             });
             this.y = this.y + 80;
-        } else {
-            Cut.image(this.image).appendTo(this.root).pin({
-                scale : 0.5,
-                offsetX: this.x,
-                offsetY: this.y
-            });
         }
-
     };
 }
