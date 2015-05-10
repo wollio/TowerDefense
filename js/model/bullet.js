@@ -1,10 +1,10 @@
-function Bullet(x, y, target, speed, root, damage) {
+function Bullet(x, y, target, speed, root, damage, image) {
     var _this = this;
     this.root = root;
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.image = 'firebullet:firebullet';
+    this.image = image;
     this.self = undefined;
     this.target = target;
     this.time = 100;

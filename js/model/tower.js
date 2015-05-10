@@ -1,4 +1,4 @@
-function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
+function Tower(xPos, yPos, image, attackspeed, range, damage, root, bullettype) {
     this.attackspeed = attackspeed;
     this.damage = damage;
     this.range = range;
@@ -7,11 +7,13 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
     this.image = image;
     this.root = root;
     this.time = 0;
+    this.bullettype = bullettype;
+    this.self = undefined;
     var _this = this;
     this.target = undefined;
 
     this.draw = function () {
-        Cut.image(this.image).appendTo(this.root).pin({
+    _this.self = Cut.image(this.image).appendTo(this.root).pin({
             offsetX: this.x,
             offsetY: this.y
         });
@@ -53,28 +55,31 @@ function Tower(xPos, yPos, image, attackspeed, range, damage, root) {
 }
 
 function MagicTower(x, y, root) {
-    this.attackspeed = 50;
-    this.damage = 100;
+    this.attackspeed = 300;
+    this.damage = 26;
     this.range = 100;
     this.root = root;
     this.image = 'mtower:magic';
-    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage, this.root);
+    this.bullettype ="magicbullet:magicbullet";
+    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage, this.root, this.bullettype);
 }
 
 function FireTower(x, y, root) {
-    this.attackspeed = 1500;
-    this.damage = 40;
+    this.attackspeed = 888;
+    this.damage = 88;
     this.range = 100;
     this.root = root;
     this.image = "ftower:fire";
-    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage, this.root);
+    this.bullettype ="firebullet:firebullet";
+    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage, this.root, this.bullettype);
 }
 
 function IceTower(x, y, root) {
     this.attackspeed = 1000;
-    this.damage = 20;
+    this.damage = 50;
     this.range = 100;
     this.root = root;
     this.image = "itower:ice";
-    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage, this.root);
+    this.bullettype ="icebullet:icebullet";
+    Tower.call(this, x, y, this.image, this.attackspeed, this.range, this.damage, this.root, this.bullettype);
 }

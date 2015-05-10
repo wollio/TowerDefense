@@ -155,6 +155,38 @@ Cut({
         ]
     }
 );
+Cut({
+        name: "magicbullet",
+        imagePath: "img/magicbullet.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter: function (cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts: [
+            {
+                name: "magicbullet", x: 0, y: 0, width: 1, height: 1
+            }
+        ]
+    }
+);
+Cut({
+        name: "icebullet",
+        imagePath: "img/icebullet.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter: function (cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts: [
+            {
+                name: "icebullet", x: 0, y: 0, width: 1, height: 1
+            }
+        ]
+    }
+);
 
 // Adding a texture
 Cut({

@@ -1,4 +1,4 @@
-function Socket(x, y, root) {
+function Socket(x, y, root, game) {
     var _this = this;
     this.x = x;
     this.y = y;
@@ -7,6 +7,7 @@ function Socket(x, y, root) {
     this.dialog = undefined;
     this.tower = undefined;
     this.cutobj = undefined;
+    this.game = game;
     this.draw = function () {
         if (!_this.cutobj) {
             _this.initializeCutOb();
@@ -23,27 +24,50 @@ function Socket(x, y, root) {
         }
     };
 
-    this.buildTower = function (optionValue,option) {
-        switch (optionValue) {
-            case 'MAGIC':
-                _this.tower = new MagicTower(this.x,this.y,this.root);
-                _this.tower.draw();
-                _this.dialog.toggle();
-                break;
-            case 'FIRE':
-                _this.tower = new FireTower(this.x,this.y,this.root);
-                _this.tower.draw();
-                _this.dialog.toggle();
-                break;
-            case 'ICE':
-                _this.tower = new IceTower(this.x,this.y,this.root);
-                _this.tower.draw();
-                _this.dialog.toggle();
-                break;
-            default:
-                break;
+
+    this.buildTower = function (optionValue) {
+    if(_this.root.money.value() >= 250)
+        {
+            switch (optionValue) {
+                case 'MAGIC':
+                    _this.tower = new MagicTower(this.x, this.y, this.root);
+                    _this.tower.draw();
+                    _this.dialog.toggle();
+                    break;
+                case 'FIRE':
+                    _this.tower = new FireTower(this.x, this.y, this.root);
+                    _this.tower.draw();
+                    _this.dialog.toggle();
+                    break;
+                case 'ICE':
+                    _this.tower = new IceTower(this.x, this.y, this.root);
+                    _this.tower.draw();
+                    _this.dialog.toggle();
+                    break;
+                default:
+                    break;
+            }
+            _this.root.money.value(_this.root.money.value()-250);
         }
     };
+
+    this.sellTower = function () {
+        _this.dialog.toggle();
+        _this.root.money.value(_this.root.money.value() + 200);
+        _this.tower.self.remove();
+        _this.tower = undefined;
+    };
+
+    this.upgradeTower = function () {
+        if(_this.root.money.value() -500 >= 0) {
+            _this.root.money.value(_this.root.money.value() - 500);
+            _this.tower.damage += 5;
+            _this.dialog.toggle();
+        }
+    };
+
+
+
 
 
     this.initializeCutOb = function () {

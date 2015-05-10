@@ -74,14 +74,14 @@ Cut(function(root, container) {
         score.value(0);
 
         //Set money on map
-        money = Cut.string('numbers:digit').value(LIFE).pin({
+        map.money = Cut.string('numbers:digit').value(LIFE).pin({
             offsetX : 40,
             offsetY : 80,
             scale : 3
         }).appendTo(map);
 
         //reset money
-        money.value(300);
+        map.money.value(300);
 
         //show start button
         playbtn = Cut.image('playbtn').pin({
@@ -136,7 +136,7 @@ Cut(function(root, container) {
                }
            } else if (result == false){
                 score.value(score.value() + 1);
-                money.value(money.value() - monster.health);
+                map.money.value(map.money.value() - monster.health);
                 var index = monsters.indexOf(monster);
                 if (index > -1) {
                     monsters.splice(index, 1);
@@ -152,10 +152,9 @@ Cut(function(root, container) {
             if(socket.tower) {
                 var bullet = socket.tower.tick(t, time, monsters)
                 if(bullet != undefined){
-                    var bullet = new Bullet(bullet.x, bullet.y, bullet.target, 2.5, map, bullet.damage);
+                    var bullet = new Bullet(bullet.x, bullet.y, bullet.target, 2.5, map, bullet.damage, socket.tower.bullettype);
                     bullet.draw();
                     bullets.push(bullet);
-                    console.log(bullets);
                 }
             }
         });

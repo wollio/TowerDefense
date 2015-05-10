@@ -19,7 +19,6 @@ function Dialog(x, y, root) {
             _this.options.forEach(function (entry) {
                 entry.show();
             });
-            console.log(_this.isVisible);
         }
         else {
             _this.isVisible = false;
@@ -28,7 +27,6 @@ function Dialog(x, y, root) {
                 entry.hide();
             });
             _this.options = [];
-            console.log(_this.isVisible);
         }
 
 
@@ -43,6 +41,7 @@ function Dialog(x, y, root) {
                     offsetX: this.x + 50,
                     offsetY: this.y + 9
                 }).on(Cut.Mouse.CLICK, function (ev) {
+                    socket.upgradeTower();
 
                 });
                 var magic = Cut.image('cash:cash').appendTo(_this.root).pin({
@@ -50,6 +49,7 @@ function Dialog(x, y, root) {
                     offsetX: this.x + 50,
                     offsetY: this.y + 92
                 }).on(Cut.Mouse.CLICK, function (ev) {
+                    socket.sellTower();
 
                 });
                 _this.options.push(fire);
