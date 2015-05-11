@@ -170,6 +170,7 @@ Cut(function(root, container) {
 
         if(monsters.length <= 0){
             playbtn.show();
+            nextWave();
         }
 
         return true;
@@ -177,10 +178,15 @@ Cut(function(root, container) {
 
     function nextWave(){
         wave = wave+1;
-        for(i = 0; i < wave; i++){
-            monsters.push(new Tanglin(2-i*60, 360, map, ways[10]));
-            monsters.push(new Vasall(2-i*60, 360, map, ways[10]));
-            monsters.push(new Rabauke(2-i*60, 360, map, ways[10]));
+
+        if (wave % 10 == 0){
+            monsters.push(new Tanglin(60, 360, map, ways[10], wave * 250));
+        } else {
+            for(i = 0; i < wave; i++){
+                monsters.push(new Tanglin(2-i*40, 360, map, ways[10], 135 + wave * 25));
+                monsters.push(new Vasall(2-i*60, 360, map, ways[10], 45 + wave * 25));
+                monsters.push(new Rabauke(2-i*30, 360, map, ways[10], 85 + wave * 25));
+            }
         }
 
         monsters.forEach(function(monster){
