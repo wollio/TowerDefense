@@ -7,7 +7,6 @@ function Bullet(x, y, target, speed, root, damage, image) {
     this.image = image;
     this.self = undefined;
     this.target = target;
-    this.time = 100;
     this.xGo = undefined;
     this.yGo = undefined;
     this.damage = damage;

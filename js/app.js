@@ -170,7 +170,6 @@ Cut(function(root, container) {
 
         if(monsters.length <= 0){
             playbtn.show();
-            nextWave();
         }
 
         return true;
