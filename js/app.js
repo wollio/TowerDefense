@@ -144,7 +144,7 @@ Cut(function(root, container) {
         });
 
         if(life.value() <= 0){
-            gameover();
+            return gameover();
         }
 
         sockets.forEach(function(socket){
@@ -205,8 +205,8 @@ Cut(function(root, container) {
     }
 
     function gameover(){
-        alert("looser!");
-        Cut.pause();
+        alert("Your score: " + score.value());
+        return false;
     }
 
     draw();
