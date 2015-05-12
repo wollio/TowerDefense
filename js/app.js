@@ -146,7 +146,6 @@ Cut(function(root, container) {
         // total time
         time += t;
 
-        //TODO not so beautiful ;-)
         monsters.forEach(function(monster){
            result = monster.tick(t, time);
             if(result){
