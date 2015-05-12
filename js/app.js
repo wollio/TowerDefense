@@ -227,6 +227,7 @@ Cut(function(root, container) {
 
     function gameover(){
         alert("Your score: " + score.value());
+        Cut.pause();
         return false;
     }
 
