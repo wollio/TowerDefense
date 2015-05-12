@@ -20,7 +20,6 @@ Cut(function(root, container) {
     var time = 0;
     var life = 0;
     var wave = 0;
-    var money = 0;
 
     /**
      * buttons
