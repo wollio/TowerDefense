@@ -138,6 +138,40 @@ Cut({
         ]
     }
 );
+Cut({
+        name: "score",
+        imagePath: "img/score.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter: function (cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts: [
+            {
+                name: "score", x: 0, y: 0, width: 1, height: 1
+            }
+        ]
+    }
+);
+
+Cut({
+        name: "live",
+        imagePath: "img/live.png",
+        imageRatio : 8,
+        ratio : 26,
+        filter: function (cut) {
+            cut.y = 1 - (cut.y + cut.height);
+            return cut;
+        },
+        cutouts: [
+            {
+                name: "live", x: 0, y: 0, width: 1, height: 1
+            }
+        ]
+    }
+);
+
 
 Cut({
         name: "firebullet",

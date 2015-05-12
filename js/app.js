@@ -49,6 +49,28 @@ Cut(function(root, container) {
         });
     });
 
+
+    //Cash image
+    Cut.image('cash:cash').appendTo(map).pin({
+        offsetX: 15,
+        offsetY: 82,
+        scale: 0.7
+    });
+
+    //Live image
+    Cut.image('live:live').appendTo(map).pin({
+        offsetX: 15,
+        offsetY: 32,
+        scale: 0.7
+    });
+
+    //Score image
+    Cut.image('score:score').appendTo(map).pin({
+        offsetX: 15,
+        offsetY: 57,
+        scale: 0.7
+    });
+
     //Startgamefunction
     function buildMap(){
 
