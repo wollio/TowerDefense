@@ -146,7 +146,9 @@ Cut(function(root, container) {
         // total time
         time += t;
 
-        //TODO not so beautiful ;-)
+        //Für jedes Monster ein tick:
+        //wenn monster Burg erreicht, -1 Leben
+        //Wenn monster stirbt erhöhre Score +1 und vergebe Geld
         monsters.forEach(function(monster){
            result = monster.tick(t, time);
             if(result){
@@ -165,10 +167,13 @@ Cut(function(root, container) {
             }
         });
 
+        //Wenn kein Leben mehr, gameover
         if(life.value() <= 0){
             return gameover();
         }
 
+        //Für jeden Sockel mit einem Turm führe tick aus
+        //und erstelle Schuss, wenn einer zurück gegeben wird.
         sockets.forEach(function(socket){
             if(socket.tower) {
                 var bullet = socket.tower.tick(t, time, monsters)
@@ -189,6 +194,8 @@ Cut(function(root, container) {
            }
         });
 
+        //Wenn keine Monster mehr auf dem Spielfeld, zeige den Playbutton wieder an,
+        //um nächste Welle zu starten.
         if(monsters.length <= 0){
             playbtn.show();
         }
@@ -228,6 +235,7 @@ Cut(function(root, container) {
 
     function gameover(){
         alert("Your score: " + score.value());
+        Cut.pause();
         return false;
     }
 

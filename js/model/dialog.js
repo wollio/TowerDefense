@@ -4,6 +4,7 @@ function Dialog(x, y, root) {
     this.y = y;
     this.image = 'dialog:standard';
     this.root = root;
+    this.selected;
     this.cutobj = undefined;
     this.isVisible = false;
     this.options = [];
