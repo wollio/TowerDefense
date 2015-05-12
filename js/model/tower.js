@@ -75,7 +75,7 @@ function FireTower(x, y, root) {
 }
 
 function IceTower(x, y, root) {
-    this.attackspeed = 1000;
+    this.attackspeed = 650;
     this.damage = 50;
     this.range = 100;
     this.root = root;
