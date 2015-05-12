@@ -7,7 +7,6 @@ function Socket(x, y, root, game) {
     this.dialog = undefined;
     this.tower = undefined;
     this.cutobj = undefined;
-    this.game = game;
     this.draw = function () {
         if (!_this.cutobj) {
             _this.initializeCutOb();
